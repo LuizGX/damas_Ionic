@@ -1,3 +1,39 @@
 page-home {
+    .white{
+        background-color: grey !important;
+    }
+
+    .black{
+        background-color: black !important;
+    }
+
+    .white, .black{
+        height: 11vw;
+        width: 11vw;
+    }
+
+    div .board{
+        display: flex;
+        flex-direction: left;
+    }
+
+    .pieceBlue{
+        background-color: blue !important;
+    }
+
+    .pieceRed{
+        background-color: red !important;
+    }
+
+    .pieceRed, .pieceBlue{
+        border-radius: 8vw;
+        height: 8vw;
+        width: 8vw;
+        position: relative;
+        left: 13%;
+        top: 13%;
+    }
+
+    
 
 }

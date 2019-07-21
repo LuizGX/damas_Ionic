@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
       Ionic Blank
     </ion-title>
@@ -7,8 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
+  This is a simple Ionic App
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+    Welcome to my checkers game.
   </p>
+  <div *ngFor="let line of board" class="board">
+    <div *ngFor="let square of line">
+      <div *ngIf="square != 'white'" class="white"></div>
+      <div *ngIf="square != 'black'" class="black">
+        <div *ngIf="line == board[0] || line == board[1] || line == board[2]" class="pieceBlue"></div>
+        <div *ngIf="line == board[5] || line == board[6] || line == board[7]" class="pieceRed"></div>
+      </div>
+    </div>
+  </div>
 </ion-content>
