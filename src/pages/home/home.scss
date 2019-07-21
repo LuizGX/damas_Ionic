@@ -12,10 +12,6 @@ page-home {
         width: 11vw;
     }
 
-    div .board{
-        display: flex;
-        flex-direction: left;
-    }
 
     .pieceBlue{
         background-color: blue !important;
@@ -30,8 +26,13 @@ page-home {
         height: 8vw;
         width: 8vw;
         position: relative;
-        left: 13%;
         top: 13%;
+        left: 13%;
+    }
+
+    div .pieces{
+        display: flex;
+        flex-direction: left;
     }
 
     

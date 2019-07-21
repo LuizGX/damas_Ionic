@@ -11,12 +11,12 @@
   <p>
     Welcome to my checkers game.
   </p>
-  <div *ngFor="let line of board" class="board">
-    <div *ngFor="let square of line">
-      <div *ngIf="square != 'white'" class="white"></div>
-      <div *ngIf="square != 'black'" class="black">
-        <div *ngIf="line == board[0] || line == board[1] || line == board[2]" class="pieceBlue"></div>
-        <div *ngIf="line == board[5] || line == board[6] || line == board[7]" class="pieceRed"></div>
+  <div *ngFor="let line of pieces" class="pieces">
+    <div *ngFor="let piece of line; let i = index">
+      <div *ngIf="piece == 'white'" class="white"></div>
+      <div *ngIf="piece == 'black' || piece == 'piece'" class="black">
+        <div *ngIf="line[i] == 'piece' && (line == pieces[0] || line == pieces[1] || line == pieces[2])" class="pieceBlue"></div>
+        <div *ngIf="line[i] == 'piece' && (line == pieces[5] || line == pieces[6] || line == pieces[7])" class="pieceRed"></div>
       </div>
     </div>
   </div>

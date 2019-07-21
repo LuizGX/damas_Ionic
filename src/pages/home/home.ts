@@ -7,22 +7,34 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
   board: any = [];
+  pieces: any = [];
   test: any = "assets/imgs/black.png";
   constructor(public navCtrl: NavController) {
-    console.log("board", this.board);
+    this.innitialize();
+    console.log("pieces", this.pieces);
+  }
+
+  innitialize(){
     for(let i=0; i < 8; i++){
-      this.board[i] = [];
+      this.pieces[i] = [];
       for(var j: number = 0; j< 8; j++) {
-        if(i%2 == 0 && j%2 == 0){
-          this.board[i][j] = "black";
+        if(i==0 || i==1 || i==2 || i==5 || i==6 || i==7){
+          if(i%2 == 0 && j%2 == 0){
+            this.pieces[i][j] = "piece";
+          }else if(i%2 != 0 && j%2 != 0){
+            this.pieces[i][j] = "piece"
+          } else {
+            this.pieces[i][j] = "white";
+          }
+        } else if(i%2 == 0 && j%2 == 0){
+          this.pieces[i][j] = "black";
         }else if(i%2 != 0 && j%2 != 0){
-          this.board[i][j] = "black"
+          this.pieces[i][j] = "black"
         } else{
-          this.board[i][j] = "white"
+          this.pieces[i][j] = "white"
         }
       }
-    }
-    console.log(this.board);
+    } 
   }
 
 }
