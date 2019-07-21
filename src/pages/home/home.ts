@@ -6,7 +6,6 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  board: any = [];
   pieces: any = [];
   test: any = "assets/imgs/black.png";
   constructor(public navCtrl: NavController) {
@@ -18,11 +17,19 @@ export class HomePage {
     for(let i=0; i < 8; i++){
       this.pieces[i] = [];
       for(var j: number = 0; j< 8; j++) {
-        if(i==0 || i==1 || i==2 || i==5 || i==6 || i==7){
+        if(i==0 || i==1 || i==2){
           if(i%2 == 0 && j%2 == 0){
-            this.pieces[i][j] = "piece";
+            this.pieces[i][j] = "pieceBlue";
           }else if(i%2 != 0 && j%2 != 0){
-            this.pieces[i][j] = "piece"
+            this.pieces[i][j] = "pieceBlue"
+          } else {
+            this.pieces[i][j] = "white";
+          }
+        } else if(i==5 || i==6 || i==7){
+          if(i%2 == 0 && j%2 == 0){
+            this.pieces[i][j] = "pieceRed";
+          }else if(i%2 != 0 && j%2 != 0){
+            this.pieces[i][j] = "pieceRed"
           } else {
             this.pieces[i][j] = "white";
           }
@@ -35,6 +42,10 @@ export class HomePage {
         }
       }
     } 
+  }
+
+  moveBlue(){
+    console.log("teste");
   }
 
 }

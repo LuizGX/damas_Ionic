@@ -13,11 +13,23 @@
   </p>
   <div *ngFor="let line of pieces" class="pieces">
     <div *ngFor="let piece of line; let i = index">
+
+      <!-- White squares -->
       <div *ngIf="piece == 'white'" class="white"></div>
-      <div *ngIf="piece == 'black' || piece == 'piece'" class="black">
-        <div *ngIf="line[i] == 'piece' && (line == pieces[0] || line == pieces[1] || line == pieces[2])" class="pieceBlue"></div>
-        <div *ngIf="line[i] == 'piece' && (line == pieces[5] || line == pieces[6] || line == pieces[7])" class="pieceRed"></div>
+
+      <!-- Blue pieces -->
+      <div *ngIf="piece == 'pieceBlue'" class="black">
+        <div *ngIf="line[i] == 'pieceBlue'" class="pieceBlue" (click)="moveBlue()"></div>
       </div>
+
+      <!-- Black squares -->
+      <div *ngIf="piece == 'black'" class="black"></div>
+      
+      <!-- Red pieces -->
+      <div *ngIf="piece == 'pieceRed'" class="black">
+        <div *ngIf="line[i] == 'pieceRed'" class="pieceRed"></div>
+      </div>
+      
     </div>
   </div>
 </ion-content>
