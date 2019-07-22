@@ -45,10 +45,12 @@ export class HomePage {
   }
 
   moveBlue(i, j){
+    this.clearMoves();
     try{
       //remove the piece
       // this.pieces[i][j] = "black";
       this.showPossibleMoves(i,j);
+      
       console.log(this.pieces);
       
       //set the piece in the other square
@@ -61,13 +63,22 @@ export class HomePage {
   showPossibleMoves(i,j){
     if(this.pieces[i+1][j]){
 
-      if(this.pieces[i+1][j-1]){
+      if(this.pieces[i+1][j-1] && this.pieces[i+1][j-1] != "pieceBlue"){
         this.pieces[i+1][j-1]="move";
       }
-      if(this.pieces[i+1][j+1]){
+      if(this.pieces[i+1][j+1] && this.pieces[i+1][j-1] != "pieceBlue"){
         this.pieces[i+1][j+1]="move";
       }
 
+    }
+  }
+
+  clearMoves(){
+    for(let i = 0; i<8; i++){
+      for(let j = 0; j<8; j++){
+        if(this.pieces[i][j] == 'move')
+          this.pieces[i][j] = "black";
+      }
     }
   }
 
