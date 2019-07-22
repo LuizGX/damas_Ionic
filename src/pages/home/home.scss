@@ -7,8 +7,12 @@ page-home {
         background-color: black !important;
     }
 
-    .white, .black{
-        height: 11vw;
+    .move{
+        background-color: rgba($color: rgb(209, 193, 50), $alpha: 0.8 ) !important;
+    }
+
+    .white, .black, .move{
+        height: 11vw;   
         width: 11vw;
     }
 

@@ -11,23 +11,26 @@
   <p>
     Welcome to my checkers game.
   </p>
-  <div *ngFor="let line of pieces" class="pieces">
-    <div *ngFor="let piece of line; let i = index">
+  <div *ngFor="let line of pieces; let i = index" class="pieces">
+    <div *ngFor="let piece of line; let j = index">
 
       <!-- White squares -->
       <div *ngIf="piece == 'white'" class="white"></div>
 
       <!-- Blue pieces -->
       <div *ngIf="piece == 'pieceBlue'" class="black">
-        <div *ngIf="line[i] == 'pieceBlue'" class="pieceBlue" (click)="moveBlue()"></div>
+        <div *ngIf="line[j] == 'pieceBlue'" class="pieceBlue" (click)="moveBlue(i,j)"></div>
       </div>
 
       <!-- Black squares -->
       <div *ngIf="piece == 'black'" class="black"></div>
+
+      <!-- Movement squares -->
+      <div *ngIf="piece == 'move'" class="move"></div>
       
       <!-- Red pieces -->
       <div *ngIf="piece == 'pieceRed'" class="black">
-        <div *ngIf="line[i] == 'pieceRed'" class="pieceRed"></div>
+        <div *ngIf="line[j] == 'pieceRed'" class="pieceRed"></div>
       </div>
       
     </div>

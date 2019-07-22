@@ -44,8 +44,31 @@ export class HomePage {
     } 
   }
 
-  moveBlue(){
-    console.log("teste");
+  moveBlue(i, j){
+    try{
+      //remove the piece
+      // this.pieces[i][j] = "black";
+      this.showPossibleMoves(i,j);
+      console.log(this.pieces);
+      
+      //set the piece in the other square
+      //this.pieces[i2][j2] = "pieceBlue";
+    } catch (err){
+      alert(err);
+    }
+  }
+
+  showPossibleMoves(i,j){
+    if(this.pieces[i+1][j]){
+
+      if(this.pieces[i+1][j-1]){
+        this.pieces[i+1][j-1]="move";
+      }
+      if(this.pieces[i+1][j+1]){
+        this.pieces[i+1][j+1]="move";
+      }
+
+    }
   }
 
 }
