@@ -8,6 +8,8 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   pieces: any = [];
   test: any = "assets/imgs/black.png";
+  pieceI:any;
+  pieceJ:any;
   constructor(public navCtrl: NavController) {
     this.innitialize();
     console.log("pieces", this.pieces);
@@ -46,21 +48,17 @@ export class HomePage {
 
   moveBlue(i, j){
     this.clearMoves();
-    try{
-      //remove the piece
-      // this.pieces[i][j] = "black";
-      this.showPossibleMoves(i,j);
+    this.showPossibleMoves(i,j);
       
-      console.log(this.pieces);
-      
-      //set the piece in the other square
-      //this.pieces[i2][j2] = "pieceBlue";
-    } catch (err){
-      alert(err);
-    }
+    console.log(this.pieces);
+    
+    //set the piece in the other square
+    //this.pieces[i2][j2] = "pieceBlue";
   }
 
   showPossibleMoves(i,j){
+    this.pieceI = i;
+    this.pieceJ = j;
     if(this.pieces[i+1][j]){
 
       if(this.pieces[i+1][j-1] && this.pieces[i+1][j-1] != "pieceBlue"){
@@ -73,11 +71,23 @@ export class HomePage {
     }
   }
 
+  moveHere(i2,j2){
+    //remove the piece
+    try{
+      this.pieces[this.pieceI][this.pieceJ] = "black";
+      this.pieces[i2][j2] = "pieceBlue";
+      this.clearMoves();
+    }catch(err){
+      alert(err);
+    }
+  }
+
   clearMoves(){
     for(let i = 0; i<8; i++){
       for(let j = 0; j<8; j++){
-        if(this.pieces[i][j] == 'move')
+        if(this.pieces[i][j] == 'move'){
           this.pieces[i][j] = "black";
+        }
       }
     }
   }

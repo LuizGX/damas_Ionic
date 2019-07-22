@@ -26,7 +26,7 @@
       <div *ngIf="piece == 'black'" class="black"></div>
 
       <!-- Movement squares -->
-      <div *ngIf="piece == 'move'" class="move"></div>
+      <div *ngIf="piece == 'move'" (click)="moveHere(i,j)" class="move"></div>
       
       <!-- Red pieces -->
       <div *ngIf="piece == 'pieceRed'" class="black">
