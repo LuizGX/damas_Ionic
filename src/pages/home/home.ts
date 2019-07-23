@@ -52,9 +52,6 @@ export class HomePage {
     this.showPossibleMoves(i,j);
       
     console.log(this.pieces);
-    
-    //set the piece in the other square
-    //this.pieces[i2][j2] = "pieceBlue";
   }
 
   showPossibleMoves(i,j){
@@ -63,10 +60,10 @@ export class HomePage {
     if(this.pieces[i][j] == "pieceBlue"){
       this.chosenPiece = "pieceBlue";
       if(this.pieces[i+1][j]){
-        if(this.pieces[i+1][j-1] && this.pieces[i+1][j-1] != "pieceBlue"){
+        if(this.pieces[i+1][j-1] && this.pieces[i+1][j-1] != "pieceBlue" && this.pieces[i+1][j-1] != "pieceRed"){
           this.pieces[i+1][j-1]="move";
         }
-        if(this.pieces[i+1][j+1] && this.pieces[i+1][j+1] != "pieceBlue"){
+        if(this.pieces[i+1][j+1] && this.pieces[i+1][j+1] != "pieceBlue" && this.pieces[i+1][j+1] != "pieceRed"){
           this.pieces[i+1][j+1]="move";
         }
 
@@ -74,10 +71,10 @@ export class HomePage {
     } else if(this.pieces[i][j] == "pieceRed"){
       this.chosenPiece = "pieceRed";
       if(this.pieces[i-1][j]){
-        if(this.pieces[i-1][j-1] && this.pieces[i-1][j-1] != "pieceRed"){
+        if(this.pieces[i-1][j-1] && this.pieces[i-1][j-1] != "pieceRed" && this.pieces[i-1][j-1] != "pieceBlue"){
           this.pieces[i-1][j-1]="move";
         }
-        if(this.pieces[i-1][j+1] && this.pieces[i-1][j+1] != "pieceRed"){
+        if(this.pieces[i-1][j+1] && this.pieces[i-1][j+1] != "pieceRed" && this.pieces[i-1][j+1] != "pieceBlue"){
           this.pieces[i-1][j+1]="move";
         }
       } 
