@@ -19,7 +19,7 @@
 
       <!-- Blue pieces -->
       <div *ngIf="piece == 'pieceBlue'" class="black">
-        <div *ngIf="line[j] == 'pieceBlue'" class="pieceBlue" (click)="moveBlue(i,j)"></div>
+        <div *ngIf="line[j] == 'pieceBlue'" class="pieceBlue" (click)="movement(i,j)"></div>
       </div>
 
       <!-- Black squares -->
@@ -29,7 +29,7 @@
       <div *ngIf="piece == 'move'" (click)="moveHere(i,j)" class="move"></div>
       
       <!-- Red pieces -->
-      <div *ngIf="piece == 'pieceRed'" class="black">
+      <div *ngIf="piece == 'pieceRed'" class="black" (click)="movement(i,j)">
         <div *ngIf="line[j] == 'pieceRed'" class="pieceRed"></div>
       </div>
       

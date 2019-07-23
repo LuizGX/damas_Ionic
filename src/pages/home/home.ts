@@ -8,6 +8,7 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   pieces: any = [];
   test: any = "assets/imgs/black.png";
+  chosenPiece:any;
   pieceI:any;
   pieceJ:any;
   constructor(public navCtrl: NavController) {
@@ -46,7 +47,7 @@ export class HomePage {
     } 
   }
 
-  moveBlue(i, j){
+  movement(i, j){
     this.clearMoves();
     this.showPossibleMoves(i,j);
       
@@ -59,24 +60,42 @@ export class HomePage {
   showPossibleMoves(i,j){
     this.pieceI = i;
     this.pieceJ = j;
-    if(this.pieces[i+1][j]){
+    if(this.pieces[i][j] == "pieceBlue"){
+      this.chosenPiece = "pieceBlue";
+      if(this.pieces[i+1][j]){
+        if(this.pieces[i+1][j-1] && this.pieces[i+1][j-1] != "pieceBlue"){
+          this.pieces[i+1][j-1]="move";
+        }
+        if(this.pieces[i+1][j+1] && this.pieces[i+1][j+1] != "pieceBlue"){
+          this.pieces[i+1][j+1]="move";
+        }
 
-      if(this.pieces[i+1][j-1] && this.pieces[i+1][j-1] != "pieceBlue"){
-        this.pieces[i+1][j-1]="move";
       }
-      if(this.pieces[i+1][j+1] && this.pieces[i+1][j-1] != "pieceBlue"){
-        this.pieces[i+1][j+1]="move";
-      }
-
+    } else if(this.pieces[i][j] == "pieceRed"){
+      this.chosenPiece = "pieceRed";
+      if(this.pieces[i-1][j]){
+        if(this.pieces[i-1][j-1] && this.pieces[i-1][j-1] != "pieceRed"){
+          this.pieces[i-1][j-1]="move";
+        }
+        if(this.pieces[i-1][j+1] && this.pieces[i-1][j+1] != "pieceRed"){
+          this.pieces[i-1][j+1]="move";
+        }
+      } 
     }
   }
 
   moveHere(i2,j2){
     //remove the piece
     try{
-      this.pieces[this.pieceI][this.pieceJ] = "black";
-      this.pieces[i2][j2] = "pieceBlue";
-      this.clearMoves();
+      if(this.chosenPiece == "pieceBlue"){
+        this.pieces[this.pieceI][this.pieceJ] = "black";
+        this.pieces[i2][j2] = "pieceBlue";
+        this.clearMoves();
+      } else if (this.chosenPiece == "pieceRed"){
+        this.pieces[this.pieceI][this.pieceJ] = "black";
+        this.pieces[i2][j2] = "pieceRed";
+        this.clearMoves();
+      }
     }catch(err){
       alert(err);
     }
