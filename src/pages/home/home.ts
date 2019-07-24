@@ -105,15 +105,44 @@ export class HomePage {
       if(this.chosenPiece == "pieceBlue"){
         this.pieces[this.pieceI][this.pieceJ] = "black";
         this.pieces[i2][j2] = "pieceBlue";
-        this.clearMoves();
       } else if (this.chosenPiece == "pieceRed"){
         this.pieces[this.pieceI][this.pieceJ] = "black";
         this.pieces[i2][j2] = "pieceRed";
-        this.clearMoves();
       }
+      this.capture(this.pieceI, this.pieceJ, i2, j2);
     }catch(err){
       alert(err);
     }
+  }
+
+  capture(cameFromi, cameFromj, goToi2, goToj2){
+    console.log("diferenca i: ", goToi2 - cameFromi);
+    console.log("diferenca j: ", goToj2 - cameFromj);
+    
+    if(goToi2 - cameFromi == 2){//blue captures
+      
+      if(goToj2 - cameFromj == 2){//to the right
+        console.log("captura pra direita");
+        this.pieces[goToi2-1][goToj2-1] = "black";
+      } else if(goToj2 - cameFromj == -2){//to the left
+        console.log("captura pra esquerda");
+        this.pieces[goToi2-1][goToj2+1] = "black";
+      }
+      
+    } else if (goToi2 - cameFromi == -2){//red captures
+      
+      if(goToj2 - cameFromj == 2){//to the right
+        console.log("captura pra direita");
+        this.pieces[goToi2+1][goToj2-1] = "black";
+      } else if(goToj2 - cameFromj == -2){//to the left
+        console.log("captura pra esquerda");
+        this.pieces[goToi2+1][goToj2+1] = "black";
+      }
+      
+    }
+    
+    
+    this.clearMoves();
   }
 
   clearMoves(){
