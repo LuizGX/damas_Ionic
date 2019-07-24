@@ -11,6 +11,7 @@ export class HomePage {
   chosenPiece:any;
   pieceI:any;
   pieceJ:any;
+  turn: any = "blue";
   constructor(public navCtrl: NavController) {
     this.innitialize();
     console.log("pieces", this.pieces);
@@ -49,8 +50,11 @@ export class HomePage {
 
   movement(i, j){
     this.clearMoves();
-    this.showPossibleMoves(i,j);
-      
+    if(this.pieces[i][j] == "pieceRed" && this.turn == "red"){
+      this.showPossibleMoves(i,j);
+    } else if(this.pieces[i][j] == "pieceBlue" && this.turn == "blue"){
+      this.showPossibleMoves(i,j);
+    }
     console.log(this.pieces);
   }
 
@@ -105,9 +109,11 @@ export class HomePage {
       if(this.chosenPiece == "pieceBlue"){
         this.pieces[this.pieceI][this.pieceJ] = "black";
         this.pieces[i2][j2] = "pieceBlue";
+        this.turn = "red";
       } else if (this.chosenPiece == "pieceRed"){
         this.pieces[this.pieceI][this.pieceJ] = "black";
         this.pieces[i2][j2] = "pieceRed";
+        this.turn = "blue";
       }
       this.capture(this.pieceI, this.pieceJ, i2, j2);
     }catch(err){
@@ -116,31 +122,23 @@ export class HomePage {
   }
 
   capture(cameFromi, cameFromj, goToi2, goToj2){
-    console.log("diferenca i: ", goToi2 - cameFromi);
-    console.log("diferenca j: ", goToj2 - cameFromj);
-    
     if(goToi2 - cameFromi == 2){//blue captures
       
       if(goToj2 - cameFromj == 2){//to the right
-        console.log("captura pra direita");
         this.pieces[goToi2-1][goToj2-1] = "black";
       } else if(goToj2 - cameFromj == -2){//to the left
-        console.log("captura pra esquerda");
         this.pieces[goToi2-1][goToj2+1] = "black";
       }
       
     } else if (goToi2 - cameFromi == -2){//red captures
       
       if(goToj2 - cameFromj == 2){//to the right
-        console.log("captura pra direita");
         this.pieces[goToi2+1][goToj2-1] = "black";
       } else if(goToj2 - cameFromj == -2){//to the left
-        console.log("captura pra esquerda");
         this.pieces[goToi2+1][goToj2+1] = "black";
       }
       
     }
-    
     
     this.clearMoves();
   }
