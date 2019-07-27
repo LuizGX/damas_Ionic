@@ -64,17 +64,17 @@ export class HomePage {
 
     if(this.pieces[i][j] == "pieceBlue"){
       this.chosenPiece = "pieceBlue";
-      if(this.pieces[i+1][j]){
-        if(this.pieces[i+1][j-1] && this.pieces[i+1][j-1] != "pieceBlue" && this.pieces[i+1][j-1] != "pieceRed"){
+      if(this.pieces[i+1] && this.pieces[i+1][j]){
+        if(this.pieces[i+1] && this.pieces[i+1][j-1] && this.pieces[i+1][j-1] != "pieceBlue" && this.pieces[i+1][j-1] != "pieceRed"){
           this.pieces[i+1][j-1]="move";
-        } else if(this.pieces[i+2][j-2] && this.pieces[i+1][j-1] == "pieceRed" && this.pieces[i+2][j-2] == "black"){
+        } else if(this.pieces[i+2] && this.pieces[i+2][j-2] && this.pieces[i+1][j-1] == "pieceRed" && this.pieces[i+2][j-2] == "black"){
           //else if the is a square on the left to jump to && the left piece is red && the square to go is black
           this.pieces[i+2][j-2]="move";
         }
 
-        if(this.pieces[i+1][j+1] && this.pieces[i+1][j+1] != "pieceBlue" && this.pieces[i+1][j+1] != "pieceRed"){
+        if(this.pieces[i+1] && this.pieces[i+1][j+1] && this.pieces[i+1][j+1] != "pieceBlue" && this.pieces[i+1][j+1] != "pieceRed"){
           this.pieces[i+1][j+1]="move";
-        } else if(this.pieces[i+2][j+2] && this.pieces[i+1][j+1] != "pieceBlue" && this.pieces[i+2][j+2] == "black"){
+        } else if(this.pieces[i+2] && this.pieces[i+2][j+2] && this.pieces[i+1][j+1] != "pieceBlue" && this.pieces[i+2][j+2] == "black"){
           this.pieces[i+2][j+2]="move";
         }
 
@@ -84,18 +84,18 @@ export class HomePage {
 
     } else if(this.pieces[i][j] == "pieceRed"){
       this.chosenPiece = "pieceRed";
-      if(this.pieces[i-1][j]){
-        if(this.pieces[i-1][j-1] && this.pieces[i-1][j-1] != "pieceRed" && this.pieces[i-1][j-1] != "pieceBlue"){
+      if(this.pieces[i-1] && this.pieces[i-1][j]){
+        if(this.pieces[i-1] && this.pieces[i-1][j-1] && this.pieces[i-1][j-1] != "pieceRed" && this.pieces[i-1][j-1] != "pieceBlue"){
           //if he can go to left && the left piece is not red nor blue
           this.pieces[i-1][j-1]="move";
-        } else if(this.pieces[i-2][j-2] && this.pieces[i-1][j-1] == "pieceBlue" && this.pieces[i-2][j-2] =="black"){
+        } else if(this.pieces[i-2] && this.pieces[i-2][j-2] && this.pieces[i-1][j-1] == "pieceBlue" && this.pieces[i-2][j-2] =="black"){
           //else if there is a square on the left to jump to && the left piece is blue && the square to go is black
           this.pieces[i-2][j-2]="move";
         }
 
-        if(this.pieces[i-1][j+1] && this.pieces[i-1][j+1] != "pieceRed" && this.pieces[i-1][j+1] != "pieceBlue"){
+        if(this.pieces[i-1] && this.pieces[i-1][j+1] && this.pieces[i-1][j+1] != "pieceRed" && this.pieces[i-1][j+1] != "pieceBlue"){
           this.pieces[i-1][j+1]="move";
-        } else if(this.pieces[i-2][j+2] && this.pieces[i-1][j+1] == "pieceBlue" && this.pieces[i-2][j+2] == "black"){
+        } else if(this.pieces[i-2] && this.pieces[i-2][j+2] && this.pieces[i-1][j+1] == "pieceBlue" && this.pieces[i-2][j+2] == "black"){
           this.pieces[i-2][j+2]="move";
         }
       } 
